@@ -20,7 +20,24 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+[1] pry(main)> require "marcy/user"
+=> true
+[2] pry(main)> require "marcy/hello/world"
+=> true
+[3] pry(main)> require "marcy/hello/user"
+=> true
+[4] pry(main)> require "marcy/national_insurance/annual_summary"
+=> true
+[5] pry(main)> user = Marcy::User.new(access_token: "dc89817a6bd7924b44347018ecc0dd", refresh_token: "db7428d73d8843a859c27608348bdb")
+=> #<Marcy::User:0x007ff97d2625b8 @access_token="dc89817a6bd7924b44347018ecc0dd", @refresh_token="db7428d73d8843a859c27608348bdb">
+[6] pry(main)> Marcy::Hello::World.new.get.json
+=> {"message"=>"Hello World"}
+[7] pry(main)> Marcy::Hello::User.new(user).get.json
+=> {"message"=>"Hello Sandbox User"}
+[8] pry(main)> Marcy::NationalInsurance::AnnualSummary.new(user).get(utr: "2234567890", tax_year: "2014-15").json
+=> {"class1"=>{"totalNICableEarnings"=>10.0}, "class2"=>{"totalDue"=>20.0}, "maxNICsReached"=>false}
+```
 
 ## Development
 
