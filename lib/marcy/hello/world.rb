@@ -1,8 +1,8 @@
-require "marcy/request"
+require "marcy/resource"
 
 module Marcy
   module Hello
-    class World < Request
+    class World < Resource
       ENDPOINT = "/hello/world"
     end
   end
