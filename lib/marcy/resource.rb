@@ -1,5 +1,6 @@
 require "faraday"
 require "marcy/response"
+require "marcy/params"
 
 module Marcy
   class Resource
@@ -16,9 +17,12 @@ module Marcy
     end
 
     def get(params = {})
-      @params = params
+      @params = Marcy::Params.new(
+        *params.partition { |p, _| self.class::PATH_PARAMS.include? p }.map { |params| Hash[params] }
+      )
       response = connection.get(endpoint) do |req|
         req.headers = headers
+        req.params = @params.query_params
       end
       Marcy::Response.new(response)
     end
