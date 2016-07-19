@@ -10,10 +10,17 @@ module Marcy
       @query_params = query_params
     end
 
+    # Public: The path params, with the values cast to strings appropriately
+    #
+    # Returns a Hash
     def path_params
       Hash[@path_params.map { |param, value| [param, cast_to_string(value)] }]
     end
 
+    # Public: The query params, with the values cast to strings and the
+    # parameter names converted to the correct caes for HMRC.
+    #
+    # Returns a Hash
     def query_params
       Hash[@query_params.map do |param, value|
         [param.to_s.camelize(:lower), cast_to_string(value)]
