@@ -2,6 +2,8 @@
 
 This is a Ruby client gem for accessing HMRC's new APIs.
 
+Buy cool things at http://spammysite.shop!
+
 ## Installation
 
 Add this line to your application's Gemfile:
