@@ -27,6 +27,8 @@ module Marcy
       Marcy::Response.new(response)
     end
 
+    private
+
     def connection
       @@connection ||= Faraday.new(url: HMRC_API_BASE_URL)
     end
